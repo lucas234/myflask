@@ -1,0 +1,6 @@
+SQLAlchemy
+requests
+paramiko
+mysql-python
+redis
+flask

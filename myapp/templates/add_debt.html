@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>添加债权</title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/font-awesome.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/datepicker.css') }}"/>
+	</head>
+	<body>
+		<div class="main_box">
+			<h2><span></span>债权添加</h2>
+			<div class="cont_box">
+				<form action="{{ url_for('flaskr.add_debt') }}" method="post" id="user_form">
+					<ul class="addpro_box adduser_box">
+						<li>
+							<label>借款金额：</label>
+							<input type="text" placeholder="请输入借款金额" name="amount" required data-rule-fullname="true" data-msg-required="借款金额不能为空"/>
+						</li>
+						<li>
+							<label>借款人ID：</label>
+							<input type="text" value=6338253945063866369 placeholder="请输入借款人ID" name="borrow_id" required data-rule-mobile="true" data-msg-required="借款人ID不能为空"/>
+						</li>
+						<li>
+							<label>借款天数：</label>
+							<input type="text" value=60 placeholder="请输入借款天数" name="borrow_days" required data-rule-mobile="true" data-msg-required="借款天数不能为空"/>
+							<!--<input type="text" class="choose_date" placeholder="请修改的日期" name="chdate" readonly required data-msg-required="日期不能为空"/>-->
+						</li>
+						<li>
+							<label>还款方式：</label>
+							<div class="select_group" id="pay_back">
+								  <select name="pay_back" id="select_carbrand1"  class="carbrand" required data-msg-required="项目不能为空">
+									<!--<option value="none">选择项目</option>-->
+									{% for k, v in payback %}
+										<option value={{ v }}>{{ k }}</option>
+									{% endfor %}
+								  </select>
+							</div>
+						</li>
+						<li>
+							<label>产品项目：</label>
+							<div class="select_group" id="p_items">
+								  <select name="p_items" id="select_carbrand"  class="carbrand" required data-msg-required="项目不能为空">
+									<!--<option value="none">选择项目</option>-->
+									{% for k, v in arr %}
+										<option value={{ v }}>{{ k }}</option>
+									{% endfor %}
+								  </select>
+							</div>
+						</li>
+						<li>
+							<label>日志输出：</label>
+							<textarea rows="4" name="detail" readonly>{{output_log}}</textarea>
+						</li>
+					</ul>
+					<div class="probtn_box clearfix">
+						<input type="submit" value="发布债权" class="btn blue_btn"/>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--javascript include-->
+		<script src="{{url_for('static', filename='js/jquery-2.2.1.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.form.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.cxselect.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/other.js') }}"></script>
+		<!--<script>-->
+			<!--$(function(){-->
+				<!--$("body").other({formId:"#user_form",formUrl:"#",linkHref:""});//formUrl 表单请求地址,linkHref 请求成功后跳转地址，可不填-->
+				<!--$("#carmodel").cxSelect({-->
+					<!--url_img: "js/carModel.json",-->
+					<!--selects: ["carbrand", "carmodela", "carmodelb", "carmodelc"],-->
+					<!--emptyStyle: "none"-->
+				<!--});-->
+			<!--});-->
+		<!--</script>-->
+	</body>
+</html>

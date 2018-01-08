@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Redis管理</title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/font-awesome.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style/datepicker.css') }}"/>
+	</head>
+	<body>
+		<div class="main_box">
+			<h2><span></span>修改Redis值</h2>
+			<div class="cont_box">
+                <form action="{{ url_for('flaskr.redis_key') }}" method="post" id="user_form">
+				<!--<form  method="post" id="user_form">-->
+					<ul class="addpro_box adduser_box">
+                        <li>
+                            <label>输入key值：</label>
+                            <input type="text"  placeholder="请输入key值,如果是set，则传参格式为key-value(test-123)" name="keys" required data-rule-mobile="true" data-msg-required="key值不能为空"/>
+                        </li>
+
+                        <li>
+							<label>日志输出：</label>
+							<textarea rows="4" name="detail" readonly>{{output_log}}</textarea>
+						</li>
+					</ul>
+					<div class="probtn_box clearfix">
+                        <label style="padding-right:5px;">
+						    <input type="submit" name="action" value="set" class="btn blue_btn"/>
+                        </label>
+                        <label style="padding-right:5px;">
+                            <input type="submit" name="action" value="get" class="btn blue_btn"/>
+                        </label>
+                        <label style="padding-right:5px;">
+                            <input type="submit" name="action" value="del" class="btn blue_btn"/>
+                        </label>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--javascript include-->
+		<script src="{{url_for('static', filename='js/jquery-2.2.1.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.form.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/jquery.cxselect.min.js') }}"></script>
+		<script src="{{url_for('static', filename='js/other.js') }}"></script>
+	</body>
+</html>
